@@ -330,7 +330,12 @@ const MonthCalendar: React.VoidFunctionComponent<DateTimePickerProps> = ({
                               const lastOption = expectTimeOption(
                                 optionsForDay[optionsForDay.length - 1].option,
                               );
-                              const startTime = lastOption.end;
+                              let startTime;
+                              if (dayjs(lastOption.start).isSame(dayjs(lastOption.end).add(duration, "minutes"), 'date')) {
+                                startTime = lastOption.end;
+                              } else {
+                                startTime = lastOption.start;
+                              }
 
                               onChange([
                                 ...options,
