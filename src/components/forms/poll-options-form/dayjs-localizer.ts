@@ -240,6 +240,9 @@ export default function (dayjs) {
   }
 
   function continuesAfter(start, end, last) {
+    var isSameOrAfter = require('dayjs/plugin/isSameOrAfter');
+    dayjs.extend(isSameOrAfter);
+
     const mEnd = dayjs(end);
     const mLast = dayjs(last);
     return mEnd.isSameOrAfter(mLast, "minutes");
