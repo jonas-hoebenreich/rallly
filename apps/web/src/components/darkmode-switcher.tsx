@@ -10,7 +10,8 @@ function DarkModeSwitcher() {
   const [darkModeEnabled, setDarkModeEnabled] = useState(false);
 
   useEffect(() => {
-    const isDarkModeEnabled = localStorage.getItem('nightwind-mode') === 'true' || window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isDarkModeEnabled = localStorage.getItem('nightwind-mode') === 'true' || 
+      (localStorage.getItem('nightwind-mode') === null && window.matchMedia('(prefers-color-scheme: dark)').matches);
     setDarkModeEnabled(isDarkModeEnabled);
   }, []);
 
